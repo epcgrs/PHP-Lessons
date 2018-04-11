@@ -1,4 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/DTxhtml1/D/xhtml1-strict.dtd">
+<?php
+	session_start();
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <!--
 Design by Free CSS Templates
 http://www.freecsstemplates.org
@@ -10,12 +13,12 @@ Version    : 1.0
 Released   : 20120915
 
 -->
-<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="../Templates/modelo.dwt" codeOutsideHTMLIsLocked="false" -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/modelo.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Aula 6</title>
+<title>Erro</title>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 <link href="../estilos/style.css" rel="stylesheet" type="text/css" media="screen" />
@@ -25,13 +28,14 @@ Released   : 20120915
 	<div id="header-wrapper">
 		<div id="header" class="container">
 			<div id="logo">
-				<h1><a href="#">Cadastro </a></h1>
+				<h1><a href="#">Site exemplo </a></h1>
 			</div>
 			<div id="menu">
 				<ul>
-					<li class="current_page_item"><a href="../index.php">Homepage</a></li>
-					<li><a href="guicadpessoa.html">cadastro</a></li>
+					<li class="current_page_item"><a href="../index.html">Homepage</a></li>
+					<li><a href="guicadusuario.html">cadastro</a></li>
 					
+                    <li><a href="../controle/usuariocontrole.php?op=consultar">consulta</a></li>
 				</ul>
 			</div>
 		</div>
@@ -46,22 +50,20 @@ Released   : 20120915
         
 		  <div class="post">
 				<!-- InstanceBeginEditable name="conteúdo" -->
-<h2 class="title">Cadastro</h2>
-<form action="../controle/pessoacontrole.php" method="post" name="cadpe">
+<h2 class="title">Erro</h2>
 
-	<fieldset><legend>Cadastro</legend>
-	<input type="text" name="txtnome" id="txtnome" placeholder="nome"/> <br />
-    
-	<input type="text" name="txtidade" id="txtidade" placeholder="idade"/> <br />   
-     
-     </fieldset>
-     
-     <fieldset><legend>Acoes</legend>
-     
-    <input type="submit" name="btn" id="btn" value="ok"/>
-    </fieldset>
-</form>
-				
+<p>
+	<?php
+		if( isset($_SESSION['e']) ){
+			$erros = array();
+			$erros = unserialize($_SESSION['e']);
+			
+			foreach($erros as $e){
+				echo '<br />'.$e;
+			}
+		}//fecha if
+	?>
+</p>
 				<!-- InstanceEndEditable -->
 
 			</div>
