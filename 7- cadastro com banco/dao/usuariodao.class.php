@@ -6,7 +6,7 @@ class UsuarioDAO{
 	
 	public function __construct(){
 		/* Buscando uma instancia de banco */
-		$this->conexao=ConexaoBanco::getInstancia();
+		$this->conexao = ConexaoBanco::getInstancia();
 	}//fecha construtor
 
 	public function cadastrarUsuario($u){
@@ -26,7 +26,7 @@ class UsuarioDAO{
 		}catch(PDOException $e){
 
 			echo 'erro ao cadastrar';
-			
+
 		}//fecha catch
 	}//fecha método cadastrar
 }//fecha usuariodao

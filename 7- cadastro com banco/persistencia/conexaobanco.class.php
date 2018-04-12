@@ -21,4 +21,6 @@ class ConexaoBanco extends PDO{
 		return self::$instancia;
 	}//fecha método
 }//fecha conexaobanco
+
+
 ?>
