@@ -58,7 +58,8 @@ Released   : 20120915
            if(isset($_SESSION['usuarios'])){
             include_once '../modelo/usuario.class.php';
             $usu = array();
-            $usu = unserialize($_SESSION['usuarios']);		 	
+            $usu = unserialize($_SESSION['usuarios']);		 
+            $main = unserialize($_SESSION['privateUser']);
             ?>		
 
             <table id="customers">
@@ -76,25 +77,38 @@ Released   : 20120915
 
            <tbody>
                <?php
-               foreach($usu as $u){
-                  echo '<tr>';
-                  echo '<td>'.$u->login.'</td>';
-                  echo '<td>*********</td>';
-                  echo '<td>'.$u->tipo.'</td>';																
-                  echo "<td> <a href='../controle/usuariocontrole.php?op=alterar&idUsuario=$u->idUsuario'>alterar</a>  </td>";	
-                  echo "<td> 
-                  <a href='../controle/usuariocontrole.php?op=deletar&idUsuario=$u->idUsuario'> Deletar </a>  </td>";						
-                  echo '</tr>';
-				}//fecha foreach
-				
-				unset($_SESSION['usuarios']);
-             ?>
-         </tbody>
-     </table>
+               if ($main->tipo !== "visitante") {
+                   foreach($usu as $u){
 
-     <?php
- }else{
-     echo 'variavel usuarios nao existe!';
+                    echo '<tr>';
+                    echo '<td>'.$u->login.'</td>';
+                    echo '<td>'.$u->senha.'</td>';
+                    echo '<td>'.$u->tipo.'</td>';																
+                    echo "<td> <a href='../controle/usuariocontrole.php?op=alterar&idUsuario=$u->idUsuario'>alterar</a>  </td>";	
+                    echo "<td> 
+                    <a href='../controle/usuariocontrole.php?op=deletar&idUsuario=$main->idUsuario'> Deletar </a>  </td>";                     
+                    echo '</tr>';   
+                }//fecha foreach
+                
+            } else {
+             echo '<tr>';
+             echo '<td>'.$main->login.'</td>';
+             echo '<td>'.$main->senha.'</td>';
+             echo '<td>'.$main->tipo.'</td>';                                                               
+             echo "<td> <a href='../controle/usuariocontrole.php?op=alterar&idUsuario=$main->idUsuario'>alterar</a>  </td>";    
+             echo "<td> 
+             <a href='../controle/usuariocontrole.php?op=deletar&idUsuario=$main->idUsuario'> Deletar </a>  </td>";                     
+             echo '</tr>';   
+         }
+
+         unset($_SESSION['usuarios']);
+         ?>
+     </tbody>
+ </table>
+
+ <?php
+}else{
+ echo 'variavel usuarios nao existe!';
 	  }//fecha else isset usuarios
      ?>
  </p>

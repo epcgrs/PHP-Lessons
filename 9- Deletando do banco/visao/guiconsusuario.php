@@ -11,7 +11,6 @@ Name       : Keyboard
 Description: A two-column, fixed-width design with dark color scheme.
 Version    : 1.0
 Released   : 20120915
-
 -->
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/modelo.dwt" codeOutsideHTMLIsLocked="false" -->
 <head>

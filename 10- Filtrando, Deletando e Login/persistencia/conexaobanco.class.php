@@ -12,8 +12,7 @@ public static function getInstancia(){
       try{
          /* Cria e retorna uma nova conexão*/
          self::$instancia = new 
-         ConexaoBanco('mysql:host=XXX;port=XXX;dbname=XXX','XXX','XXX');
-         
+         ConexaoBanco('mysql:host=XXX;port=XXX;dbname=XXX','XXX','XXX');         
          
          
      }catch(Exception $e){
